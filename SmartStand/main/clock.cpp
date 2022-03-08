@@ -38,6 +38,8 @@ String Clock::toString(char separator, bool year, bool month, bool day, bool hou
   }
 
   if(minute){
+    if(now.minute() < 10)
+      date += "0";
     date += now.minute();
     if(second)
       date += separator;
@@ -53,6 +55,31 @@ String Clock::toString(char separator, bool year, bool month, bool day, bool hou
 DateTime Clock::getDate()
 {
   return rtc.now();
+}
+
+String Clock::getDayOfWeek()
+{
+  int idx = rtc.now().dayOfTheWeek();
+
+  switch(idx)
+  {
+    case 1:
+      return "Mon";
+    case 2:
+      return "Tue";
+    case 3:
+      return "Wed";
+    case 4:
+      return "Thu";
+    case 5:
+      return "Fri";
+    case 6:
+      return "Sat";
+    case 0:
+      return "Sun";
+    default:
+      return "---";
+  }
 }
 
 void Clock::setDate(DateTime newDate)

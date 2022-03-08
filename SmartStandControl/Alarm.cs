@@ -45,6 +45,8 @@ namespace arduinoControlTest
 
     internal class Alarm
     {
+        private const string filePath = "";
+
         public List<AlarmItem> items;
         public List<ListViewItem> listViewItems;
 
@@ -52,6 +54,21 @@ namespace arduinoControlTest
         {
             items = new List<AlarmItem>();
             listViewItems = new List<ListViewItem>();
+        }
+
+        ~Alarm()
+        {
+            Save();
+        }
+
+        public void Load(string path = filePath)
+        {
+            AddItem(new AlarmItem());
+        }
+
+        public void Save(string path = filePath)
+        {
+
         }
 
         public void AddItem(AlarmItem item)

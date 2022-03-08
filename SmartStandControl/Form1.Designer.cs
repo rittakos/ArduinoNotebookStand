@@ -34,31 +34,31 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.connection_button = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button5 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.sendColor_button = new System.Windows.Forms.Button();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.button1 = new System.Windows.Forms.Button();
+            this.color_button = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.setTimeOnButton_checkBox = new System.Windows.Forms.CheckBox();
+            this.setTime_button = new System.Windows.Forms.Button();
             this.time_dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.button4 = new System.Windows.Forms.Button();
+            this.setPort_button = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.alarm_tabPage = new System.Windows.Forms.TabPage();
-            this.createAlarm_button = new System.Windows.Forms.Button();
-            this.alarmOnArduino_checkBox = new System.Windows.Forms.CheckBox();
-            this.alarmNoise_checkBox = new System.Windows.Forms.CheckBox();
-            this.alarmLight_checkBox = new System.Windows.Forms.CheckBox();
-            this.alarmName_textBox = new System.Windows.Forms.TextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.alarm_dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.alarms_listView = new System.Windows.Forms.ListView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.alarmRepeat_comboBox = new System.Windows.Forms.ComboBox();
             this.deletAlarm_button = new System.Windows.Forms.Button();
+            this.alarmRepeat_comboBox = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.alarms_listView = new System.Windows.Forms.ListView();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.alarm_dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.alarmName_textBox = new System.Windows.Forms.TextBox();
+            this.alarmLight_checkBox = new System.Windows.Forms.CheckBox();
+            this.alarmNoise_checkBox = new System.Windows.Forms.CheckBox();
+            this.alarmOnArduino_checkBox = new System.Windows.Forms.CheckBox();
+            this.createAlarm_button = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -90,8 +90,7 @@
             // 
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.button3);
-            this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Controls.Add(this.connection_button);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -119,33 +118,21 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Status: ";
             // 
-            // button3
+            // connection_button
             // 
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(9, 66);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(9, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 23);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Connect";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.connection_button.Location = new System.Drawing.Point(9, 19);
+            this.connection_button.Name = "connection_button";
+            this.connection_button.Size = new System.Drawing.Size(98, 23);
+            this.connection_button.TabIndex = 0;
+            this.connection_button.Text = "Connect";
+            this.connection_button.UseVisualStyleBackColor = true;
+            this.connection_button.Click += new System.EventHandler(this.connection_button_Click);
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button5);
-            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.sendColor_button);
             this.tabPage2.Controls.Add(this.trackBar1);
-            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.color_button);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -154,24 +141,15 @@
             this.tabPage2.Text = "Color";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // sendColor_button
             // 
-            this.button5.Location = new System.Drawing.Point(21, 174);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(109, 79);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(146, 35);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(626, 22);
-            this.textBox1.TabIndex = 6;
+            this.sendColor_button.Location = new System.Drawing.Point(30, 150);
+            this.sendColor_button.Name = "sendColor_button";
+            this.sendColor_button.Size = new System.Drawing.Size(109, 79);
+            this.sendColor_button.TabIndex = 7;
+            this.sendColor_button.Text = "Send";
+            this.sendColor_button.UseVisualStyleBackColor = true;
+            this.sendColor_button.Click += new System.EventHandler(this.sendColor_button_Click);
             // 
             // trackBar1
             // 
@@ -183,20 +161,22 @@
             this.trackBar1.TabIndex = 5;
             this.trackBar1.Value = 1;
             // 
-            // button1
+            // color_button
             // 
-            this.button1.Location = new System.Drawing.Point(21, 31);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 94);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.color_button.Location = new System.Drawing.Point(21, 31);
+            this.color_button.Name = "color_button";
+            this.color_button.Size = new System.Drawing.Size(109, 94);
+            this.color_button.TabIndex = 1;
+            this.color_button.Text = "Choose Color";
+            this.color_button.UseVisualStyleBackColor = true;
+            this.color_button.Click += new System.EventHandler(this.color_button_Click);
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.setTimeOnButton_checkBox);
+            this.tabPage3.Controls.Add(this.setTime_button);
             this.tabPage3.Controls.Add(this.time_dateTimePicker);
-            this.tabPage3.Controls.Add(this.button4);
+            this.tabPage3.Controls.Add(this.setPort_button);
             this.tabPage3.Controls.Add(this.label3);
             this.tabPage3.Controls.Add(this.textBox2);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
@@ -207,27 +187,47 @@
             this.tabPage3.Text = "Settings";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // setTimeOnButton_checkBox
+            // 
+            this.setTimeOnButton_checkBox.AutoSize = true;
+            this.setTimeOnButton_checkBox.Location = new System.Drawing.Point(301, 65);
+            this.setTimeOnButton_checkBox.Name = "setTimeOnButton_checkBox";
+            this.setTimeOnButton_checkBox.Size = new System.Drawing.Size(120, 20);
+            this.setTimeOnButton_checkBox.TabIndex = 5;
+            this.setTimeOnButton_checkBox.Text = "on button press";
+            this.setTimeOnButton_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // setTime_button
+            // 
+            this.setTime_button.Location = new System.Drawing.Point(427, 65);
+            this.setTime_button.Name = "setTime_button";
+            this.setTime_button.Size = new System.Drawing.Size(75, 23);
+            this.setTime_button.TabIndex = 4;
+            this.setTime_button.Text = "Set Time";
+            this.setTime_button.UseVisualStyleBackColor = true;
+            this.setTime_button.Click += new System.EventHandler(this.setTime_button_Click);
+            // 
             // time_dateTimePicker
             // 
-            this.time_dateTimePicker.Location = new System.Drawing.Point(20, 98);
+            this.time_dateTimePicker.Location = new System.Drawing.Point(301, 28);
             this.time_dateTimePicker.Name = "time_dateTimePicker";
             this.time_dateTimePicker.Size = new System.Drawing.Size(200, 22);
             this.time_dateTimePicker.TabIndex = 3;
             // 
-            // button4
+            // setPort_button
             // 
-            this.button4.Location = new System.Drawing.Point(177, 42);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Set Port";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.setPort_button.Location = new System.Drawing.Point(20, 53);
+            this.setPort_button.Name = "setPort_button";
+            this.setPort_button.Size = new System.Drawing.Size(151, 43);
+            this.setPort_button.TabIndex = 2;
+            this.setPort_button.Text = "Set Port";
+            this.setPort_button.UseVisualStyleBackColor = true;
+            this.setPort_button.Click += new System.EventHandler(this.setPort_button_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 45);
+            this.label3.Location = new System.Drawing.Point(17, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 16);
             this.label3.TabIndex = 1;
@@ -235,7 +235,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(57, 40);
+            this.textBox2.Location = new System.Drawing.Point(71, 25);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 22);
             this.textBox2.TabIndex = 0;
@@ -262,110 +262,110 @@
             this.alarm_tabPage.Text = "Alarm";
             this.alarm_tabPage.UseVisualStyleBackColor = true;
             // 
-            // createAlarm_button
+            // deletAlarm_button
             // 
-            this.createAlarm_button.Location = new System.Drawing.Point(207, 105);
-            this.createAlarm_button.Name = "createAlarm_button";
-            this.createAlarm_button.Size = new System.Drawing.Size(75, 23);
-            this.createAlarm_button.TabIndex = 0;
-            this.createAlarm_button.Text = "Create";
-            this.createAlarm_button.UseVisualStyleBackColor = true;
-            this.createAlarm_button.Click += new System.EventHandler(this.createAlarm_button_Click);
+            this.deletAlarm_button.Location = new System.Drawing.Point(680, 270);
+            this.deletAlarm_button.Name = "deletAlarm_button";
+            this.deletAlarm_button.Size = new System.Drawing.Size(75, 70);
+            this.deletAlarm_button.TabIndex = 10;
+            this.deletAlarm_button.Text = "Delete";
+            this.deletAlarm_button.UseVisualStyleBackColor = true;
+            this.deletAlarm_button.Click += new System.EventHandler(this.deletAlarm_button_Click);
             // 
-            // alarmOnArduino_checkBox
+            // alarmRepeat_comboBox
             // 
-            this.alarmOnArduino_checkBox.AutoSize = true;
-            this.alarmOnArduino_checkBox.Location = new System.Drawing.Point(23, 34);
-            this.alarmOnArduino_checkBox.Name = "alarmOnArduino_checkBox";
-            this.alarmOnArduino_checkBox.Size = new System.Drawing.Size(95, 20);
-            this.alarmOnArduino_checkBox.TabIndex = 1;
-            this.alarmOnArduino_checkBox.Text = "checkBox1";
-            this.alarmOnArduino_checkBox.UseVisualStyleBackColor = true;
+            this.alarmRepeat_comboBox.FormattingEnabled = true;
+            this.alarmRepeat_comboBox.Location = new System.Drawing.Point(84, 99);
+            this.alarmRepeat_comboBox.Name = "alarmRepeat_comboBox";
+            this.alarmRepeat_comboBox.Size = new System.Drawing.Size(172, 24);
+            this.alarmRepeat_comboBox.TabIndex = 9;
             // 
-            // alarmNoise_checkBox
+            // label4
             // 
-            this.alarmNoise_checkBox.AutoSize = true;
-            this.alarmNoise_checkBox.Location = new System.Drawing.Point(23, 72);
-            this.alarmNoise_checkBox.Name = "alarmNoise_checkBox";
-            this.alarmNoise_checkBox.Size = new System.Drawing.Size(95, 20);
-            this.alarmNoise_checkBox.TabIndex = 2;
-            this.alarmNoise_checkBox.Text = "checkBox2";
-            this.alarmNoise_checkBox.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(20, 102);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 16);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Repeat: ";
+            // 
+            // alarms_listView
+            // 
+            this.alarms_listView.HideSelection = false;
+            this.alarms_listView.Location = new System.Drawing.Point(363, 227);
+            this.alarms_listView.Name = "alarms_listView";
+            this.alarms_listView.Size = new System.Drawing.Size(271, 148);
+            this.alarms_listView.TabIndex = 7;
+            this.alarms_listView.UseCompatibleStateImageBehavior = false;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(23, 227);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(316, 148);
+            this.listBox1.TabIndex = 6;
+            // 
+            // alarm_dateTimePicker
+            // 
+            this.alarm_dateTimePicker.Location = new System.Drawing.Point(23, 61);
+            this.alarm_dateTimePicker.Name = "alarm_dateTimePicker";
+            this.alarm_dateTimePicker.Size = new System.Drawing.Size(233, 22);
+            this.alarm_dateTimePicker.TabIndex = 5;
+            // 
+            // alarmName_textBox
+            // 
+            this.alarmName_textBox.Location = new System.Drawing.Point(23, 21);
+            this.alarmName_textBox.Name = "alarmName_textBox";
+            this.alarmName_textBox.Size = new System.Drawing.Size(233, 22);
+            this.alarmName_textBox.TabIndex = 4;
             // 
             // alarmLight_checkBox
             // 
             this.alarmLight_checkBox.AutoSize = true;
-            this.alarmLight_checkBox.Location = new System.Drawing.Point(23, 108);
+            this.alarmLight_checkBox.Location = new System.Drawing.Point(483, 98);
             this.alarmLight_checkBox.Name = "alarmLight_checkBox";
-            this.alarmLight_checkBox.Size = new System.Drawing.Size(95, 20);
+            this.alarmLight_checkBox.Size = new System.Drawing.Size(172, 20);
             this.alarmLight_checkBox.TabIndex = 3;
-            this.alarmLight_checkBox.Text = "checkBox3";
+            this.alarmLight_checkBox.Text = "turn on lights (on device)";
             this.alarmLight_checkBox.UseVisualStyleBackColor = true;
             // 
-            // alarmName_textBox
+            // alarmNoise_checkBox
             // 
-            this.alarmName_textBox.Location = new System.Drawing.Point(180, 32);
-            this.alarmName_textBox.Name = "alarmName_textBox";
-            this.alarmName_textBox.Size = new System.Drawing.Size(203, 22);
-            this.alarmName_textBox.TabIndex = 4;
+            this.alarmNoise_checkBox.AutoSize = true;
+            this.alarmNoise_checkBox.Location = new System.Drawing.Point(483, 61);
+            this.alarmNoise_checkBox.Name = "alarmNoise_checkBox";
+            this.alarmNoise_checkBox.Size = new System.Drawing.Size(169, 20);
+            this.alarmNoise_checkBox.TabIndex = 2;
+            this.alarmNoise_checkBox.Text = "make noise (on device)";
+            this.alarmNoise_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // alarmOnArduino_checkBox
+            // 
+            this.alarmOnArduino_checkBox.AutoSize = true;
+            this.alarmOnArduino_checkBox.Location = new System.Drawing.Point(483, 23);
+            this.alarmOnArduino_checkBox.Name = "alarmOnArduino_checkBox";
+            this.alarmOnArduino_checkBox.Size = new System.Drawing.Size(129, 20);
+            this.alarmOnArduino_checkBox.TabIndex = 1;
+            this.alarmOnArduino_checkBox.Text = "upload to device";
+            this.alarmOnArduino_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // createAlarm_button
+            // 
+            this.createAlarm_button.Location = new System.Drawing.Point(289, 133);
+            this.createAlarm_button.Name = "createAlarm_button";
+            this.createAlarm_button.Size = new System.Drawing.Size(127, 56);
+            this.createAlarm_button.TabIndex = 0;
+            this.createAlarm_button.Text = "Create";
+            this.createAlarm_button.UseVisualStyleBackColor = true;
+            this.createAlarm_button.Click += new System.EventHandler(this.createAlarm_button_Click);
             // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // alarm_dateTimePicker
-            // 
-            this.alarm_dateTimePicker.Location = new System.Drawing.Point(443, 34);
-            this.alarm_dateTimePicker.Name = "alarm_dateTimePicker";
-            this.alarm_dateTimePicker.Size = new System.Drawing.Size(200, 22);
-            this.alarm_dateTimePicker.TabIndex = 5;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(59, 206);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 84);
-            this.listBox1.TabIndex = 6;
-            // 
-            // alarms_listView
-            // 
-            this.alarms_listView.HideSelection = false;
-            this.alarms_listView.Location = new System.Drawing.Point(207, 206);
-            this.alarms_listView.Name = "alarms_listView";
-            this.alarms_listView.Size = new System.Drawing.Size(436, 97);
-            this.alarms_listView.TabIndex = 7;
-            this.alarms_listView.UseCompatibleStateImageBehavior = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(398, 108);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 16);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Repeat: ";
-            // 
-            // alarmRepeat_comboBox
-            // 
-            this.alarmRepeat_comboBox.FormattingEnabled = true;
-            this.alarmRepeat_comboBox.Location = new System.Drawing.Point(482, 99);
-            this.alarmRepeat_comboBox.Name = "alarmRepeat_comboBox";
-            this.alarmRepeat_comboBox.Size = new System.Drawing.Size(169, 24);
-            this.alarmRepeat_comboBox.TabIndex = 9;
-            // 
-            // deletAlarm_button
-            // 
-            this.deletAlarm_button.Location = new System.Drawing.Point(681, 223);
-            this.deletAlarm_button.Name = "deletAlarm_button";
-            this.deletAlarm_button.Size = new System.Drawing.Size(75, 23);
-            this.deletAlarm_button.TabIndex = 10;
-            this.deletAlarm_button.Text = "Delete";
-            this.deletAlarm_button.UseVisualStyleBackColor = true;
-            this.deletAlarm_button.Click += new System.EventHandler(this.deletAlarm_button_Click);
             // 
             // Form1
             // 
@@ -397,18 +397,16 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button color_button;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button connection_button;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button setPort_button;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button sendColor_button;
         private System.Windows.Forms.DateTimePicker time_dateTimePicker;
         private System.Windows.Forms.TabPage alarm_tabPage;
         private System.Windows.Forms.DateTimePicker alarm_dateTimePicker;
@@ -423,6 +421,8 @@
         private System.Windows.Forms.ComboBox alarmRepeat_comboBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button deletAlarm_button;
+        private System.Windows.Forms.Button setTime_button;
+        private System.Windows.Forms.CheckBox setTimeOnButton_checkBox;
     }
 }
 

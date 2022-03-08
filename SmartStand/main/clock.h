@@ -16,6 +16,7 @@ class Clock
 
     DateTime getDate();
     int getTemperature() { return rtc.getTemperature(); }
+    String getDayOfWeek();
 
     String getTimeString() { return toString(':', false, false, false, true, true, true); }
     String getTimeStringNoSec() { return toString(':', false, false, false, true, true, false); }

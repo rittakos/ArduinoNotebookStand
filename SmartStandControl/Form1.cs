@@ -11,14 +11,9 @@ using System.Windows.Forms;
 namespace arduinoControlTest
 {
     public partial class Form1 : Form
-    {
-        public delegate void AddDataDelegate(String myString);// Delegate for richtextbox
-        public AddDataDelegate myDelegate;// An instance of AddDataDelegate
-        public delegate void AddDataDelegate_button(String myString);// Delegate for button
-        public AddDataDelegate_button myDelegate_button;// An instance of AddDataDelegate_button
-        bool status = false;// LED status
-        bool connected = false;
+    {      
         Alarm alarm = new Alarm();
+        Arduino arduino;
 
         public Form1()
         {
@@ -27,8 +22,7 @@ namespace arduinoControlTest
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            connected = false;
-            serialPort1.PortName = "COM4";
+            arduino = new Arduino(serialPort1);
 
             alarm_dateTimePicker.Format = DateTimePickerFormat.Custom;
             alarm_dateTimePicker.CustomFormat = "HH:mm tt";
@@ -44,117 +38,87 @@ namespace arduinoControlTest
             update();
         }
 
-        public void AddDataMethod_button(String myString)
-        {
-            button1.Text = myString;//changes button text
-        }
-
-        public void AddDataMethod(String myString)
-        {
-            //richTextBox1.Text = myString + Environment.NewLine;//changes richtextbox text
-        }
-
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            string s = serialPort1.ReadExisting();//reads the serialport buffer
-            if (s.Contains("state="))//checks if it is status
+            //string s = serialPort1.ReadExisting();//reads the serialport buffer
+            //if (s.Contains("state="))//checks if it is status
+            //{
+            //    s=s.Trim();
+            //    string new_s = s.Replace("state=", "");
+            //    if (new_s.Contains("0"))
+            //    {
+            //        status = false;
+            //        button1.Invoke(this.myDelegate_button, new Object[] { "ON" });//sets button text to on
+            //    }
+            //    else
+            //    {
+            //        status = true;
+            //        button1.Invoke(this.myDelegate_button, new Object[] { "OFF" });//sets button text to off
+            //    }
+            //}
+            //else
+            //{
+            //    //richTextBox1.Invoke(this.myDelegate, new Object[] { s });//adds the recieved bytes to the richtextbox
+            //}
+        }
+
+        private void color_button_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            colorDialog.AllowFullOpen = true;
+            colorDialog.ShowHelp = true;
+            colorDialog.Color = color_button.BackColor;
+
+            if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                s=s.Trim();
-                string new_s = s.Replace("state=", "");
-                if (new_s.Contains("0"))
-                {
-                    status = false;
-                    button1.Invoke(this.myDelegate_button, new Object[] { "ON" });//sets button text to on
-                }
-                else
-                {
-                    status = true;
-                    button1.Invoke(this.myDelegate_button, new Object[] { "OFF" });//sets button text to off
-                }
-            }
-            else
-            {
-                //richTextBox1.Invoke(this.myDelegate, new Object[] { s });//adds the recieved bytes to the richtextbox
+                arduino.StrokeColor = colorDialog.Color;
+                color_button.BackColor =  colorDialog.Color;
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void connection_button_Click(object sender, EventArgs e)
         {
-            ColorDialog MyDialog = new ColorDialog();
-            MyDialog.AllowFullOpen = true;
-            MyDialog.ShowHelp = true;
-            MyDialog.Color = textBox1.BackColor;
- 
-            if (MyDialog.ShowDialog() == DialogResult.OK)
-                textBox1.BackColor =  MyDialog.Color;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if(!connected)
+            try
             {
-                try
-                {
-                    serialPort1.Open();
-                    button2.Text = "Disconnect";
-                    label2.Text = "Connected";
-                    label2.ForeColor = Color.Green;
-                    this.myDelegate = new AddDataDelegate(AddDataMethod);//Assigning "the function that changes richtextbox text" to the delegate
-                    this.myDelegate_button = new AddDataDelegate_button(AddDataMethod_button);//Assigning "the function that changes button text" to the delegate
-                    serialPort1.WriteLine("STATE");
-                    connected = true;
-                }
-                catch { label2.Text = "Could not Connect!"; }
-            } else
+                arduino.Connect();
+            }catch
             {
-                serialPort1.Close();
-                button2.Text = "Connect";
-                label2.Text = "Not Connected";
-                label2.ForeColor = Color.Red;
-                connected = false;
+                label2.Text = "Could not Connect!";
             }
+
             update();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (button3.Text.Contains("ON"))
-            {
-                serialPort1.WriteLine("OFF");//sends off command when the previous state was on
-                button3.Text = "OFF";
-                status = false;
-            }
-            else
-            {
-                serialPort1.WriteLine("ON");//sends on command when the previous state was off
-                button3.Text = "ON";
-                status = true;
-            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (connected)
-                serialPort1.Close();
+            
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void setPort_button_Click(object sender, EventArgs e)
         {
-            serialPort1.PortName = textBox2.Text;
+            arduino.Port = textBox2.Text;
         }
 
         private void update()
         {
-            if(connected)
-                button3.Enabled = true;
+            if (arduino.isConnected())
+            {
+                connection_button.Text = "Disconnect";
+                label2.Text = "Connected";
+                label2.ForeColor = Color.Green;
+            }
             else
-                button3.Enabled = false;
+            {
+                connection_button.Text = "Connect";
+                label2.Text = "Not Connected";
+                label2.ForeColor = Color.Red;
+            }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void sendColor_button_Click(object sender, EventArgs e)
         {
-            string color = "Color:" + textBox1.BackColor.R.ToString() + ":" + textBox1.BackColor.G.ToString() + ":" + textBox1.BackColor.B.ToString();
-            serialPort1.WriteLine(color);
+            string color = "Color:" + color_button.BackColor.R.ToString() + ":" + color_button.BackColor.G.ToString() + ":" + color_button.BackColor.B.ToString();
+            arduino.sendMessage(color);
         }
 
         private void createAlarm_button_Click(object sender, EventArgs e)
@@ -184,16 +148,25 @@ namespace arduinoControlTest
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            foreach(AlarmItem item in alarm.items)
+
+            foreach (AlarmItem item in alarm.items)
             {
+                string message = "Alarm:Szia!:" + item.noise + ":" + item.ligth + ':' + item.onArduino;
+                arduino.sendMessage(message);
                 DateTime now = DateTime.Now;
-                if(now.Hour == item.time.Hour && now.Minute == item.time.Minute)
+                if (now.Hour == item.time.Hour && now.Minute == item.time.Minute)
                 {
                     listBox1.BackColor = Color.Red;
+                    arduino.sendMessage("Alarm:Szia!:" + item.noise + ":" + item.ligth + ':' + item.onArduino);
                     return;
                 }
             }
             listBox1.BackColor = Color.White;
+        }
+
+        private void setTime_button_Click(object sender, EventArgs e)
+        {
+            arduino.sendMessage("Time:::::");
         }
     }
 }
