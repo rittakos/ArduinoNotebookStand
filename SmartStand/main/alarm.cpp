@@ -8,6 +8,8 @@
    this->sound = sound;
    this->led = led;
    this->repeat = repeat;
+
+   this->done = false;
  }
 
 void Alarm::addAlarmItem(AlarmItem* alarmItem, int idx)

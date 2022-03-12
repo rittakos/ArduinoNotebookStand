@@ -27,9 +27,17 @@ namespace arduinoControlTest
             this.serialPort.PortName = port;
         }
 
-        public void sendMessage(string message)
+        public bool sendMessage(string message)
         {
-            serialPort.WriteLine(message);
+            if(!connected)
+                return false;
+            try
+            {
+                serialPort.WriteLine(message);
+                return true;
+            } catch { return false; }
+
+            return false;
         }
 
         public void Connect()

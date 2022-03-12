@@ -1,5 +1,7 @@
 #include "main.h"
 
+#include "led.h"
+
 Main* core;
 
 void setup() {

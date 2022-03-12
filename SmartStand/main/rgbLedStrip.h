@@ -1,6 +1,8 @@
 #ifndef RGB_LED_STRIP_H
 #define RGB_LED_STRIP_H
 
+#include "color.h"
+
 class RGBLedStrip
 {
 private:
@@ -8,9 +10,7 @@ private:
   const int gPin;
   const int bPin;
 
-  int r;
-  int g;
-  int b;
+  Color color;
 
   float brightness;
 public:
@@ -19,8 +19,10 @@ public:
   void on();
   void off();
 
-  void setColor(int r, int g, int b);
+  void setColor(Color color);
   void setBrightness(float brightness);
+
+  Color getColor() const {return color;}
 };
 
 #endif

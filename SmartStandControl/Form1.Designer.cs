@@ -37,7 +37,6 @@
             this.connection_button = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.sendColor_button = new System.Windows.Forms.Button();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.color_button = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.setTimeOnButton_checkBox = new System.Windows.Forms.CheckBox();
@@ -62,7 +61,6 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.alarm_tabPage.SuspendLayout();
             this.SuspendLayout();
@@ -131,7 +129,6 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.sendColor_button);
-            this.tabPage2.Controls.Add(this.trackBar1);
             this.tabPage2.Controls.Add(this.color_button);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
@@ -143,23 +140,13 @@
             // 
             // sendColor_button
             // 
-            this.sendColor_button.Location = new System.Drawing.Point(30, 150);
+            this.sendColor_button.Location = new System.Drawing.Point(176, 31);
             this.sendColor_button.Name = "sendColor_button";
-            this.sendColor_button.Size = new System.Drawing.Size(109, 79);
+            this.sendColor_button.Size = new System.Drawing.Size(124, 94);
             this.sendColor_button.TabIndex = 7;
             this.sendColor_button.Text = "Send";
             this.sendColor_button.UseVisualStyleBackColor = true;
             this.sendColor_button.Click += new System.EventHandler(this.sendColor_button_Click);
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.LargeChange = 0;
-            this.trackBar1.Location = new System.Drawing.Point(146, 69);
-            this.trackBar1.Maximum = 100;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(626, 56);
-            this.trackBar1.TabIndex = 5;
-            this.trackBar1.Value = 1;
             // 
             // color_button
             // 
@@ -190,18 +177,19 @@
             // setTimeOnButton_checkBox
             // 
             this.setTimeOnButton_checkBox.AutoSize = true;
-            this.setTimeOnButton_checkBox.Location = new System.Drawing.Point(301, 65);
+            this.setTimeOnButton_checkBox.Location = new System.Drawing.Point(21, 174);
             this.setTimeOnButton_checkBox.Name = "setTimeOnButton_checkBox";
             this.setTimeOnButton_checkBox.Size = new System.Drawing.Size(120, 20);
             this.setTimeOnButton_checkBox.TabIndex = 5;
             this.setTimeOnButton_checkBox.Text = "on button press";
+            this.setTimeOnButton_checkBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.setTimeOnButton_checkBox.UseVisualStyleBackColor = true;
             // 
             // setTime_button
             // 
-            this.setTime_button.Location = new System.Drawing.Point(427, 65);
+            this.setTime_button.Location = new System.Drawing.Point(20, 200);
             this.setTime_button.Name = "setTime_button";
-            this.setTime_button.Size = new System.Drawing.Size(75, 23);
+            this.setTime_button.Size = new System.Drawing.Size(200, 44);
             this.setTime_button.TabIndex = 4;
             this.setTime_button.Text = "Set Time";
             this.setTime_button.UseVisualStyleBackColor = true;
@@ -209,7 +197,7 @@
             // 
             // time_dateTimePicker
             // 
-            this.time_dateTimePicker.Location = new System.Drawing.Point(301, 28);
+            this.time_dateTimePicker.Location = new System.Drawing.Point(21, 137);
             this.time_dateTimePicker.Name = "time_dateTimePicker";
             this.time_dateTimePicker.Size = new System.Drawing.Size(200, 22);
             this.time_dateTimePicker.TabIndex = 3;
@@ -381,8 +369,6 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.alarm_tabPage.ResumeLayout(false);
@@ -397,7 +383,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Button color_button;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button connection_button;

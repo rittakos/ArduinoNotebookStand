@@ -123,15 +123,19 @@ namespace arduinoControlTest
 
         private void createAlarm_button_Click(object sender, EventArgs e)
         {
-            alarm.AddItem(new AlarmItem(alarmName_textBox.Text,
-                                        alarm_dateTimePicker.Value,
-                                        alarmNoise_checkBox.Checked,
-                                        alarmLight_checkBox.Checked,
-                                        alarmOnArduino_checkBox.Checked,
-                                        Repeat.NEVER));
+            AlarmItem alarmItem = new AlarmItem(alarmName_textBox.Text,
+                                                alarm_dateTimePicker.Value,
+                                                alarmNoise_checkBox.Checked,
+                                                alarmLight_checkBox.Checked,
+                                                alarmOnArduino_checkBox.Checked,
+                                                Repeat.NEVER);
+            alarm.AddItem(alarmItem);
 
             alarms_listView.Items.Add(alarm.listViewItems.Last());
             alarms_listView.Refresh();
+
+            if(alarmItem.onArduino)
+                arduino.sendMessage(alarmItem.ToString());
         }
 
         private void deletAlarm_button_Click(object sender, EventArgs e)
@@ -151,8 +155,6 @@ namespace arduinoControlTest
 
             foreach (AlarmItem item in alarm.items)
             {
-                string message = "Alarm:Szia!:" + item.noise + ":" + item.ligth + ':' + item.onArduino;
-                arduino.sendMessage(message);
                 DateTime now = DateTime.Now;
                 if (now.Hour == item.time.Hour && now.Minute == item.time.Minute)
                 {

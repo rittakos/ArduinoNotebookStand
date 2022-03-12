@@ -6,19 +6,13 @@ RGBLedStrip::RGBLedStrip (int rPin, int gPin, int bPin) : rPin(rPin), gPin(gPin)
   pinMode(rPin, OUTPUT);
   pinMode(gPin, OUTPUT);
   pinMode(bPin, OUTPUT);
-
-  r = 255;
-  g = 255;
-  b = 255;  
-
-  brightness = 0.5f;
 }
   
 void RGBLedStrip::on()
 {
-  analogWrite(rPin, r * brightness);
-  analogWrite(gPin, g * brightness);
-  analogWrite(bPin, b * brightness);
+  analogWrite(rPin, color.r() * brightness);
+  analogWrite(gPin, color.g() * brightness);
+  analogWrite(bPin, color.b() * brightness);
 }
 
 void RGBLedStrip::off()
@@ -40,26 +34,9 @@ void RGBLedStrip::setBrightness(float brightness)
   on();
 }
 
-void RGBLedStrip::setColor(int r, int g, int b)
+void RGBLedStrip::setColor(Color color)
 {
-  if(r < 0)
-    r = 0;
-  if(r > 255)
-    r = 255;
-
-  if(g < 0)
-    g = 0;
-  if(g > 255)
-    g = 255;
-
-  if(b < 0)
-    b = 0;
-  if(b > 255)
-    b = 255;
-
-  this->r = r;
-  this->g = g;
-  this->b = b;
+  this->color = color;
 
   on();
 }

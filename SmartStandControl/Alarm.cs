@@ -30,6 +30,21 @@ namespace arduinoControlTest
 
         public Repeat repeat;
 
+        public override string ToString()
+        {
+            string text = "CreateAlarm:";
+            text += message + ":";
+            text += time.Year + ":";
+            text += time.Month + ":";
+            text += time.Day + ":";
+            text += time.Hour + ":";
+            text += time.Minute + ":";
+            text += noise + ":";
+            text += ligth + ":";
+            text += repeat;
+            return text;
+        }
+
         public AlarmItem(string name, DateTime time, bool noise, bool ligth, bool onArduino, Repeat repeat, string message = "")
         {
             this.name = name;

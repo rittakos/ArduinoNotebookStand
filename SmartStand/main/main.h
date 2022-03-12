@@ -7,6 +7,7 @@
 #include "rgbLedStrip.h"
 #include "potmeter.h"
 #include "alarm.h"
+#include "stateMachine.h"
 
 #include <RTClib.h>
 #include <Wire.h>
@@ -16,7 +17,7 @@
 
 enum DisplayStatus
 {
-  OFF,
+  SLEEP,
   TIME,
   TEMP
 };
@@ -45,17 +46,29 @@ private:
   AlarmItem*    alarmInProgress;
 
   bool          power;
-  DisplayStatus displayStatus = OFF;
+  DisplayStatus displayStatus = SLEEP;
   int           counter;
+  bool          alarmOn = false;
+
+  const int alarmIterCount          = 5000;
+  const int processInputIterCount   = 1000;
+  const int refreshDisplayIterCount = 100;
+
+  void setCounter();
+
+  void setPower();
+  void on();
+  void off();
+  void processInput();
+
+  void checkAlarm();
+  void refreshDisplay();
+
+  void triggerAlarm();
 
 public:
   Main();
 
   void init();
-  void step();
-  void setPower();
-  void on();
-  void off();
-  void processInput();
-  
+  void step(); 
 };

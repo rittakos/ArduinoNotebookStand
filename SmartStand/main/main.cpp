@@ -19,10 +19,10 @@ void Main::init()
   power = true;
   counter = 0;
   led->on();
-  strip->setColor(0, 0, 255);
+  strip->setColor(Color (0, 0, 255));
   displayStatus = TIME;
 
-  AlarmItem* item = new AlarmItem(DateTime(2022, 3, 8, 19, 34, 00), "Szia!", false, false, Repeat::NEVER);
+  AlarmItem* item = new AlarmItem(DateTime(2022, 3, 12, 18, 15, 00), "Szia!", false, false, Repeat::NEVER);
   alarm->addAlarmItem(item, 0);
 
   Serial.begin(115200);
@@ -39,7 +39,6 @@ void Main::step()
   // if(button.isOn()){
   //   clock->setDate(DateTime(2022, 3, 5, 22, 43, 30));
   // }
-  ++counter;
 
   setPower();
 
@@ -47,44 +46,33 @@ void Main::step()
     strip->setBrightness(potmeter->getNormalisedValue());
   }
 
-  if(counter % 100 == 0)
+  if(counter % refreshDisplayIterCount == 0)
   {
     if(power)
     {
-      display->clear();
-      //if(displayStatus == TIME)
-        display->quiteWrite(clock->getTimeStringNoSec(), 0, 10, 4);
-        display->quiteWrite( clock->getDayOfWeek(), 0, 50, 2);
-      //else if(displayStatus == TEMP)
-        display->quiteWrite( String(clock->getTemperature()) + (char)247 + "C", 50, 50, 2);
-      display->show();
+      refreshDisplay();
    }
   } 
   
-  if(counter % 1000 == 0)
+  if(counter % processInputIterCount == 0)
   {
     processInput();
   }  
 
-  if(counter % 5000 == 0)
+  if(counter % alarmIterCount == 0)
   {
-    alarmInProgress = alarm->checkCurrentAlarm(clock->getDate());
-    if(alarmInProgress != nullptr)
-      display->write(alarmInProgress->getMessage(), 0, 10, 2);
-
-    // switch (displayStatus)
-    // {
-    //   case TIME:
-    //     displayStatus = TEMP;
-    //     break;
-    //   case TEMP:
-    //     displayStatus = TIME;
-    //     break;
-    //   default:
-    //     break;
-    // }
-    counter = 0;
+    checkAlarm();
   }
+
+  setCounter();
+}
+
+void Main::setCounter()
+{
+  if(counter > alarmIterCount)
+    counter = 0;
+
+  ++counter;
 }
 
 void Main::setPower()
@@ -156,6 +144,40 @@ void Main::processInput()
         data = data.substring(index+1);
       }
     }
-    strip->setColor(r, g, b);
+    strip->setColor(Color(r, g, b));
   }
+}
+
+void Main::checkAlarm()
+{  alarmInProgress = alarm->checkCurrentAlarm(clock->getDate());
+    if(alarmInProgress != nullptr && !alarmInProgress->isDone())
+    {
+      triggerAlarm();
+    }
+}
+
+void Main::triggerAlarm()
+{
+  display->write(alarmInProgress->getMessage(), 0, 10, 2);
+  Color oldColor = lightStrip->getColor();
+  if(alarmInProgress->useLight())
+  {
+    
+  }
+  while(!button->isOn())
+  {
+
+  }
+  alarmInProgress->stop();
+}
+
+void Main::refreshDisplay()
+{
+  display->clear();
+  //if(displayStatus == TIME)
+    display->quiteWrite(clock->getTimeStringNoSec(), 0, 10, 4);
+    display->quiteWrite( clock->getDayOfWeek(), 0, 50, 2);
+  //else if(displayStatus == TEMP)
+    display->quiteWrite( String(clock->getTemperature()) + (char)247 + "C", 50, 50, 2);
+  display->show();
 }
