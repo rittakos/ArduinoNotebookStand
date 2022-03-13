@@ -31,6 +31,25 @@ public:
     this->b_ = b;
   }
 
+  Color(const Color& other)
+  {
+      this->r_ = other.r_;
+      this->g_ = other.g_;
+      this->b_ = other.b_;
+  }
+
+  Color operator=(const Color& other)
+  {
+    if (this == &other)
+        return *this;
+        
+    this->r_ = other.r_;
+    this->g_ = other.g_;
+    this->b_ = other.b_;
+
+    return *this;
+  }
+
   int r() const {return r_;}
   int g() const {return g_;}
   int b() const {return b_;}

@@ -36,8 +36,6 @@ namespace arduinoControlTest
                 serialPort.WriteLine(message);
                 return true;
             } catch { return false; }
-
-            return false;
         }
 
         public void Connect()

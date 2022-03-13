@@ -30,6 +30,9 @@ namespace arduinoControlTest
 
         public Repeat repeat;
 
+
+        public bool Done { get; set; }
+
         public override string ToString()
         {
             string text = "CreateAlarm:";
@@ -55,6 +58,8 @@ namespace arduinoControlTest
             this.ligth = ligth;
             this.onArduino = onArduino;
             this.repeat = repeat;
+
+            Done = false;
         }
     }
 

@@ -32,4 +32,6 @@ C:\Users\akosr\AppData\Local\Temp\VMBuilds\SmartStation\uno\Release\SmartStation
  C:\Users\akosr\AppData\Local\Temp\VMBuilds\SmartStation\uno\Release\color.h \
  C:\Users\akosr\AppData\Local\Temp\VMBuilds\SmartStation\uno\Release\potmeter.h \
  C:\Users\akosr\AppData\Local\Temp\VMBuilds\SmartStation\uno\Release\alarm.h \
- C:\Users\akosr\AppData\Local\Temp\VMBuilds\SmartStation\uno\Release\stateMachine.h
+ C:\Users\akosr\AppData\Local\Temp\VMBuilds\SmartStation\uno\Release\stateMachine.h \
+ C:\Users\akosr\AppData\Local\Temp\VMBuilds\SmartStation\uno\Release\noiseMaker.h \
+ C:\Users\akosr\AppData\Local\Temp\VMBuilds\SmartStation\uno\Release\command.h

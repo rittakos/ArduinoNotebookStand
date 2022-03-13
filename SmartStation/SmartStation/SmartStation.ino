@@ -8,9 +8,11 @@
 
 Main* core;
 
+
 void setup() {
 	core = new Main();
 	core->init();
+	//pinMode(8, OUTPUT);
 }
 
 void loop() {

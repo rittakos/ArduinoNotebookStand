@@ -8,12 +8,15 @@
 #include "potmeter.h"
 #include "alarm.h"
 #include "stateMachine.h"
+#include "noiseMaker.h"
+#include "command.h"
 
 #include <RTClib.h>
 #include <Wire.h>
 #include <SPI.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+#include <Arduino.h>
 
 struct pins
 {
@@ -23,6 +26,7 @@ struct pins
   static const int redPin          = 3;
   static const int greenPin        = 5;
   static const int bluePin         = 6;
+  static const int noiseMakerPin   = 8;
 };
 
 class Main
@@ -37,6 +41,7 @@ private:
   Clock*        clock;
   Alarm*        alarm;
   AlarmItem*    alarmInProgress;
+  NoiseMaker*	noiseMaker;
 
   bool          power;
   int           counter;
@@ -51,12 +56,14 @@ private:
   void setPower();
   void on();
   void off();
-  void processInput();
+  Command* processInput();
 
   void checkAlarm();
   void refreshDisplay();
 
   void triggerAlarm();
+
+  //String* parseInput(String data, char splitBy);
 
 public:
   Main();

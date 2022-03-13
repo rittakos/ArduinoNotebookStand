@@ -58,6 +58,19 @@
             this.alarmOnArduino_checkBox = new System.Windows.Forms.CheckBox();
             this.createAlarm_button = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.refreshTime_checkBox = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.displayTime_checkBox = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.noiseLenght_textBox = new System.Windows.Forms.TextBox();
+            this.displayDay_checkBox = new System.Windows.Forms.CheckBox();
+            this.displayDate_checkBox = new System.Windows.Forms.CheckBox();
+            this.displayTemp_checkBox = new System.Windows.Forms.CheckBox();
+            this.displayUpdate_button = new System.Windows.Forms.Button();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.answer_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.command_textBox = new System.Windows.Forms.TextBox();
+            this.sendCommand_button = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -86,6 +99,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.sendCommand_button);
+            this.tabPage1.Controls.Add(this.command_textBox);
+            this.tabPage1.Controls.Add(this.answer_richTextBox);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.connection_button);
@@ -160,6 +176,13 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.displayUpdate_button);
+            this.tabPage3.Controls.Add(this.displayTemp_checkBox);
+            this.tabPage3.Controls.Add(this.displayDate_checkBox);
+            this.tabPage3.Controls.Add(this.displayDay_checkBox);
+            this.tabPage3.Controls.Add(this.displayTime_checkBox);
+            this.tabPage3.Controls.Add(this.label5);
+            this.tabPage3.Controls.Add(this.refreshTime_checkBox);
             this.tabPage3.Controls.Add(this.setTimeOnButton_checkBox);
             this.tabPage3.Controls.Add(this.setTime_button);
             this.tabPage3.Controls.Add(this.time_dateTimePicker);
@@ -231,6 +254,8 @@
             // 
             // alarm_tabPage
             // 
+            this.alarm_tabPage.Controls.Add(this.noiseLenght_textBox);
+            this.alarm_tabPage.Controls.Add(this.label6);
             this.alarm_tabPage.Controls.Add(this.deletAlarm_button);
             this.alarm_tabPage.Controls.Add(this.alarmRepeat_comboBox);
             this.alarm_tabPage.Controls.Add(this.label4);
@@ -355,6 +380,121 @@
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // refreshTime_checkBox
+            // 
+            this.refreshTime_checkBox.AutoSize = true;
+            this.refreshTime_checkBox.Location = new System.Drawing.Point(20, 251);
+            this.refreshTime_checkBox.Name = "refreshTime_checkBox";
+            this.refreshTime_checkBox.Size = new System.Drawing.Size(188, 20);
+            this.refreshTime_checkBox.TabIndex = 6;
+            this.refreshTime_checkBox.Text = "Refresh time when connect";
+            this.refreshTime_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(277, 80);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(56, 16);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Display:";
+            // 
+            // displayTime_checkBox
+            // 
+            this.displayTime_checkBox.AutoSize = true;
+            this.displayTime_checkBox.Location = new System.Drawing.Point(369, 38);
+            this.displayTime_checkBox.Name = "displayTime_checkBox";
+            this.displayTime_checkBox.Size = new System.Drawing.Size(60, 20);
+            this.displayTime_checkBox.TabIndex = 8;
+            this.displayTime_checkBox.Text = "Time";
+            this.displayTime_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(480, 133);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 16);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Noise Length:";
+            // 
+            // noiseLenght_textBox
+            // 
+            this.noiseLenght_textBox.Location = new System.Drawing.Point(575, 130);
+            this.noiseLenght_textBox.Name = "noiseLenght_textBox";
+            this.noiseLenght_textBox.Size = new System.Drawing.Size(100, 22);
+            this.noiseLenght_textBox.TabIndex = 12;
+            this.noiseLenght_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.noiseLenght_textBox_KeyPress);
+            // 
+            // displayDay_checkBox
+            // 
+            this.displayDay_checkBox.AutoSize = true;
+            this.displayDay_checkBox.Location = new System.Drawing.Point(369, 65);
+            this.displayDay_checkBox.Name = "displayDay_checkBox";
+            this.displayDay_checkBox.Size = new System.Drawing.Size(54, 20);
+            this.displayDay_checkBox.TabIndex = 9;
+            this.displayDay_checkBox.Text = "Day";
+            this.displayDay_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // displayDate_checkBox
+            // 
+            this.displayDate_checkBox.AutoSize = true;
+            this.displayDate_checkBox.Location = new System.Drawing.Point(369, 92);
+            this.displayDate_checkBox.Name = "displayDate_checkBox";
+            this.displayDate_checkBox.Size = new System.Drawing.Size(58, 20);
+            this.displayDate_checkBox.TabIndex = 10;
+            this.displayDate_checkBox.Text = "Date";
+            this.displayDate_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // displayTemp_checkBox
+            // 
+            this.displayTemp_checkBox.AutoSize = true;
+            this.displayTemp_checkBox.Location = new System.Drawing.Point(369, 119);
+            this.displayTemp_checkBox.Name = "displayTemp_checkBox";
+            this.displayTemp_checkBox.Size = new System.Drawing.Size(107, 20);
+            this.displayTemp_checkBox.TabIndex = 11;
+            this.displayTemp_checkBox.Text = "Temperature";
+            this.displayTemp_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // displayUpdate_button
+            // 
+            this.displayUpdate_button.Location = new System.Drawing.Point(512, 65);
+            this.displayUpdate_button.Name = "displayUpdate_button";
+            this.displayUpdate_button.Size = new System.Drawing.Size(184, 46);
+            this.displayUpdate_button.TabIndex = 12;
+            this.displayUpdate_button.Text = "Update display";
+            this.displayUpdate_button.UseVisualStyleBackColor = true;
+            this.displayUpdate_button.Click += new System.EventHandler(this.displayUpdate_button_Click);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 60000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // answer_richTextBox
+            // 
+            this.answer_richTextBox.Location = new System.Drawing.Point(30, 100);
+            this.answer_richTextBox.Name = "answer_richTextBox";
+            this.answer_richTextBox.Size = new System.Drawing.Size(721, 195);
+            this.answer_richTextBox.TabIndex = 4;
+            this.answer_richTextBox.Text = "";
+            // 
+            // command_textBox
+            // 
+            this.command_textBox.Location = new System.Drawing.Point(30, 72);
+            this.command_textBox.Name = "command_textBox";
+            this.command_textBox.Size = new System.Drawing.Size(645, 22);
+            this.command_textBox.TabIndex = 5;
+            // 
+            // sendCommand_button
+            // 
+            this.sendCommand_button.Location = new System.Drawing.Point(691, 72);
+            this.sendCommand_button.Name = "sendCommand_button";
+            this.sendCommand_button.Size = new System.Drawing.Size(75, 23);
+            this.sendCommand_button.TabIndex = 6;
+            this.sendCommand_button.Text = "Send";
+            this.sendCommand_button.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -408,6 +548,19 @@
         private System.Windows.Forms.Button deletAlarm_button;
         private System.Windows.Forms.Button setTime_button;
         private System.Windows.Forms.CheckBox setTimeOnButton_checkBox;
+        private System.Windows.Forms.CheckBox displayTime_checkBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox refreshTime_checkBox;
+        private System.Windows.Forms.TextBox noiseLenght_textBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button displayUpdate_button;
+        private System.Windows.Forms.CheckBox displayTemp_checkBox;
+        private System.Windows.Forms.CheckBox displayDate_checkBox;
+        private System.Windows.Forms.CheckBox displayDay_checkBox;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.RichTextBox answer_richTextBox;
+        private System.Windows.Forms.Button sendCommand_button;
+        private System.Windows.Forms.TextBox command_textBox;
     }
 }
 

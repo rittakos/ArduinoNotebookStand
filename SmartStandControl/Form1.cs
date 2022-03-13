@@ -15,6 +15,9 @@ namespace arduinoControlTest
         Alarm alarm = new Alarm();
         Arduino arduino;
 
+        public delegate void AddDataDelegate(String myString);
+        public AddDataDelegate myDelegate;
+
         public Form1()
         {
             InitializeComponent();
@@ -22,6 +25,7 @@ namespace arduinoControlTest
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.myDelegate = new AddDataDelegate(AddDataMethod);
             arduino = new Arduino(serialPort1);
 
             alarm_dateTimePicker.Format = DateTimePickerFormat.Custom;
@@ -34,13 +38,27 @@ namespace arduinoControlTest
             alarms_listView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             alarms_listView.Columns.Add("Name");
             alarms_listView.Columns.Add("Time");
-            
+
+            try
+            {
+                arduino.Connect();
+            }
+            catch
+            {
+                label2.Text = "Could not Connect!";
+            }
             update();
         }
 
+        private void AddDataMethod(String myString)
+        {
+            answer_richTextBox.Text += myString;
+        }
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            //string s = serialPort1.ReadExisting();//reads the serialport buffer
+            string input = serialPort1.ReadExisting();
+            answer_richTextBox.Invoke(this.myDelegate, new Object[] { input });
+
             //if (s.Contains("state="))//checks if it is status
             //{
             //    s=s.Trim();
@@ -153,13 +171,15 @@ namespace arduinoControlTest
         private void timer1_Tick(object sender, EventArgs e)
         {
 
-            foreach (AlarmItem item in alarm.items)
+            for (int idx = 0; idx < alarm.items.Count; ++idx)
             {
+                var item = alarm.items[idx];
                 DateTime now = DateTime.Now;
-                if (now.Hour == item.time.Hour && now.Minute == item.time.Minute)
+                if (!item.Done && now.Hour == item.time.Hour && now.Minute == item.time.Minute)
                 {
                     listBox1.BackColor = Color.Red;
-                    arduino.sendMessage("Alarm:Szia!:" + item.noise + ":" + item.ligth + ':' + item.onArduino);
+                    arduino.sendMessage("Alarm:" + item.name + ":" + item.noise + ":" + item.ligth + ':' + item.onArduino);
+                    item.Done = true;
                     return;
                 }
             }
@@ -169,6 +189,28 @@ namespace arduinoControlTest
         private void setTime_button_Click(object sender, EventArgs e)
         {
             arduino.sendMessage("Time:::::");
+        }
+
+        private void noiseLenght_textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void displayUpdate_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            for (int idx = 0; idx < alarm.items.Count; ++idx)
+            {
+                var item = alarm.items[idx];
+                item.Done = false;
+            }
         }
     }
 }

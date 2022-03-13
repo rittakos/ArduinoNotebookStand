@@ -12,9 +12,12 @@
    this->done = false;
  }
 
-void Alarm::addAlarmItem(AlarmItem* alarmItem, int idx)
+void Alarm::addAlarmItem(AlarmItem* alarmItem)
 {
-  alarmItems[idx] = alarmItem;
+  alarmItems[alarmitemCount] = alarmItem;
+  ++alarmitemCount;
+  if (alarmitemCount >= 5)
+      alarmitemCount = 0;
 }
 
 AlarmItem* Alarm::checkCurrentAlarm(DateTime now) 
@@ -28,6 +31,8 @@ AlarmItem* Alarm::checkCurrentAlarm(DateTime now)
 
   return nullptr;
 }
+
+const Color Alarm::alarmColor = Color(255, 0, 0);
 
 int Alarm::equal(DateTime time1, DateTime time2, Repeat repeat) //works only on equal
 {

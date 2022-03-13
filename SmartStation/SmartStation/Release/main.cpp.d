@@ -31,4 +31,6 @@ C:\Users\akosr\AppData\Local\Temp\VMBuilds\SmartStation\uno\Release\main.cpp.o: 
  C:\Projects\ArduinoNotebookStand\SmartStation\color.h \
  C:\Projects\ArduinoNotebookStand\SmartStation\potmeter.h \
  C:\Projects\ArduinoNotebookStand\SmartStation\alarm.h \
- C:\Projects\ArduinoNotebookStand\SmartStation\stateMachine.h
+ C:\Projects\ArduinoNotebookStand\SmartStation\stateMachine.h \
+ C:\Projects\ArduinoNotebookStand\SmartStation\noiseMaker.h \
+ C:\Projects\ArduinoNotebookStand\SmartStation\command.h
