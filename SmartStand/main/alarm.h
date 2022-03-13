@@ -3,6 +3,8 @@
 
 #include <RTClib.h>
 
+#include "color.h"
+
 enum Repeat
 {
   DAILY,

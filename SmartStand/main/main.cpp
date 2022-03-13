@@ -159,8 +159,8 @@ void Main::checkAlarm()
 void Main::triggerAlarm()
 {
   display->write(alarmInProgress->getMessage(), 0, 10, 2);
-  Color oldColor = lightStrip->getColor();
-  if(alarmInProgress->useLight())
+  Color oldColor = strip->getColor();
+  if(alarmInProgress->useLed())
   {
     
   }
