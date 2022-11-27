@@ -17,6 +17,7 @@ namespace arduinoControlTest
         private System.Drawing.Color stripColor;
         public System.Drawing.Color StrokeColor { get { return stripColor; } set { stripColor = value; } }
 
+        public bool refreshTimeOnConnect { get; set; }
         public bool isConnected() { return connected; }
 
         public Arduino(SerialPort serialPort)
@@ -46,6 +47,10 @@ namespace arduinoControlTest
                 {
                     serialPort.Open();
                     connected = true;
+                    if(refreshTimeOnConnect)
+                    {
+
+                    }
                 } catch { throw new Exception("Couldn't connect!"); }
             }
             else

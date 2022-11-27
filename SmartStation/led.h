@@ -6,7 +6,10 @@ class LED
   private:
     int pin;
   public:
-    LED(int p);
+    LED(int p = -1);
+
+    bool connect();
+
     void on();
     void off();
 };

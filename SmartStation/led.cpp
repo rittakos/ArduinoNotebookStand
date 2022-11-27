@@ -4,7 +4,14 @@
 LED::LED(int p)
 {
   pin = p;
-  pinMode(p, OUTPUT);
+}
+
+bool LED::connect()
+{
+	if (pin == -1)
+		return false;
+	pinMode(pin, OUTPUT);
+	return true;
 }
 
 void LED::on()

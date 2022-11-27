@@ -4,15 +4,23 @@
  Author:	akosr
 */
 
-#include "main.h"
+//#include "led.h"
+#include "core.h"
 
-Main* core;
+//#include "display.h"
+//#include "displayOLEDI2C.h"
 
+//Display* d;
+
+Core* core;
 
 void setup() {
-	core = new Main();
-	core->init();
-	//pinMode(8, OUTPUT);
+	/*LED led(13);
+	led.connect();
+	led.on();*/
+	//core.setup();
+	core = new Core();
+	//d = new OledDisplay(128, 64, -1);
 }
 
 void loop() {

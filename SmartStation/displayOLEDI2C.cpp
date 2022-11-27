@@ -1,7 +1,7 @@
 #include "displayOLEDI2C.h"
 #include <Wire.h>
 
-int DisplayOLEDI2C::getScreenAddress()
+int OledDisplay::getScreenAddress()
 {
   Wire.begin();
   int error, address;
@@ -39,7 +39,7 @@ int DisplayOLEDI2C::getScreenAddress()
 }
 
 
-DisplayOLEDI2C::DisplayOLEDI2C(int width, int height, int olderReset, int screenAdress/* = 0x3C*/) : width(width), height(height), oledReset(oledReset)
+OledDisplay::OledDisplay(int width, int height, int olderReset, int screenAdress/* = 0x3C*/) : width(width), height(height), oledReset(oledReset)
 {
   display = new Adafruit_SSD1306(width, height, &Wire, oledReset);
   
@@ -49,11 +49,11 @@ DisplayOLEDI2C::DisplayOLEDI2C(int width, int height, int olderReset, int screen
   }
 
   display->display();
-  delay(2000); // Pause for 2 seconds
+  delay(2000);
 }
 
 
-void DisplayOLEDI2C::write(String text, int x, int y, int size)
+void OledDisplay::write(String text, int x, int y, int size)
 {
   display->clearDisplay();
 
@@ -64,7 +64,7 @@ void DisplayOLEDI2C::write(String text, int x, int y, int size)
   display->display(); 
 }
 
-void DisplayOLEDI2C::quiteWrite(String text, int x, int y, int size)
+void OledDisplay::quiteWrite(String text, int x, int y, int size)
 {
   display->setTextSize(size);
   display->setTextColor(WHITE);
@@ -72,12 +72,12 @@ void DisplayOLEDI2C::quiteWrite(String text, int x, int y, int size)
   display->println(text);
 }
 
-void DisplayOLEDI2C::show()
+void OledDisplay::show()
 {
   display->display();
 }
 
-void DisplayOLEDI2C::clear()
+void OledDisplay::clear()
 {
   display->clearDisplay();
 }

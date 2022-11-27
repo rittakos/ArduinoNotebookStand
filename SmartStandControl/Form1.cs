@@ -212,5 +212,10 @@ namespace arduinoControlTest
                 item.Done = false;
             }
         }
+
+        private void refreshTime_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            arduino.refreshTimeOnConnect = refreshTime_checkBox.Checked;
+        }
     }
 }

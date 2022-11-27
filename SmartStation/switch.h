@@ -6,7 +6,8 @@ class Switch
 private:
   int pin;
 public:
-  Switch (int pin);
+  Switch (int pin = -1);
+  bool connect();
   bool isOn();
 };
 

@@ -3,7 +3,14 @@
 
 Switch::Switch (int pin) : pin(pin)
 {
-  pinMode(pin, INPUT);
+}
+
+bool Switch::connect()
+{
+	if (pin == -1)
+		return false;
+	pinMode(pin, INPUT);
+	return true;
 }
 
 

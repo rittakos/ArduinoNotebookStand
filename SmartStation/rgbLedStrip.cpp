@@ -3,9 +3,40 @@
 
 RGBLedStrip::RGBLedStrip (int rPin, int gPin, int bPin) : rPin(rPin), gPin(gPin), bPin(bPin)
 {
-  pinMode(rPin, OUTPUT);
-  pinMode(gPin, OUTPUT);
-  pinMode(bPin, OUTPUT);
+  brightness = 1.0f;
+  color = Color(0, 0, 255);
+}
+
+RGBLedStrip::RGBLedStrip(const RGBLedStrip& other)
+{
+    this->rPin = other.rPin;
+    this->rPin = other.gPin;
+    this->rPin = other.bPin;
+
+    this->brightness = other.brightness;
+    this->color = other.color;
+}
+
+RGBLedStrip RGBLedStrip::operator=(const RGBLedStrip& other)
+{
+    if (this == &other)
+        return *this;
+
+    this->rPin = other.rPin;
+    this->rPin = other.gPin;
+    this->rPin = other.bPin;
+
+    this->brightness = other.brightness;
+    this->color = other.color;
+
+    return *this;
+}
+
+void RGBLedStrip::connect()
+{
+    pinMode(rPin, OUTPUT);
+    pinMode(gPin, OUTPUT);
+    pinMode(bPin, OUTPUT);
 }
   
 void RGBLedStrip::on()
@@ -31,12 +62,9 @@ void RGBLedStrip::setBrightness(float brightness)
     brightness = 1;
 
   this->brightness = brightness;
-  on();
 }
 
 void RGBLedStrip::setColor(Color color)
 {
   this->color = color;
-
-  on();
 }

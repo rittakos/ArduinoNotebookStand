@@ -33,9 +33,6 @@
     <ClInclude Include="..\command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\display.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\displayOLEDI2C.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -61,6 +58,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\noiseMaker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -93,6 +96,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\noiseMaker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\core.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

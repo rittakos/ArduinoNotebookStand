@@ -6,16 +6,22 @@
 class RGBLedStrip
 {
 private:
-  const int rPin;
-  const int gPin;
-  const int bPin;
+  int rPin;
+  int gPin;
+  int bPin;
 
   Color color;
-
   float brightness;
+
 public:
-  RGBLedStrip (int rPin, int gPin, int bPin);
+  RGBLedStrip (int rPin = 0, int gPin = 0, int bPin = 0);
+
+  RGBLedStrip(const RGBLedStrip& other);
+
+  RGBLedStrip operator=(const RGBLedStrip& other);
   
+  void connect();
+
   void on();
   void off();
 

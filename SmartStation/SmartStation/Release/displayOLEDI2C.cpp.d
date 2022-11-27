@@ -1,7 +1,6 @@
 C:\Users\akosr\AppData\Local\Temp\VMBuilds\SmartStation\uno\Release\displayOLEDI2C.cpp.o: \
  C:\Projects\ArduinoNotebookStand\SmartStation\displayOLEDI2C.cpp \
  C:\Projects\ArduinoNotebookStand\SmartStation\displayOLEDI2C.h \
- C:\Projects\ArduinoNotebookStand\SmartStation\display.h \
  C:\Users\akosr\AppData\Local\arduino15\packages\arduino\hardware\avr\1.8.5\libraries\SPI\src/SPI.h \
  C:\Users\akosr\AppData\Local\arduino15\packages\arduino\hardware\avr\1.8.5\cores\arduino/Arduino.h \
  C:\Users\akosr\AppData\Local\arduino15\packages\arduino\hardware\avr\1.8.5\cores\arduino/binary.h \
@@ -19,4 +18,5 @@ C:\Users\akosr\AppData\Local\Temp\VMBuilds\SmartStation\uno\Release\displayOLEDI
  C:\Users\akosr\Documents\Arduino\libraries\Adafruit_GFX_Library/Adafruit_GFX.h \
  C:\Users\akosr\AppData\Local\arduino15\packages\arduino\hardware\avr\1.8.5\cores\arduino/Print.h \
  C:\Users\akosr\Documents\Arduino\libraries\Adafruit_GFX_Library/gfxfont.h \
- C:\Users\akosr\Documents\Arduino\libraries\Adafruit_SSD1306/Adafruit_SSD1306.h
+ C:\Users\akosr\Documents\Arduino\libraries\Adafruit_SSD1306/Adafruit_SSD1306.h \
+ C:\Projects\ArduinoNotebookStand\SmartStation\display.h

@@ -33,10 +33,10 @@ class Main
 {
 private:
   LED* led;
-  Display*      display;
+ //Display*      display;
   Switch*       powerSwitch;
   Switch*       button;
-  RGBLedStrip*  strip;
+  //RGBLedStrip*  strip;
   Potmeter*     potmeter;
   Clock*        clock;
   Alarm*        alarm;
@@ -63,10 +63,14 @@ private:
 
   void triggerAlarm();
 
+  void processColorChangeInput(String data);
+
   //String* parseInput(String data, char splitBy);
 
 public:
   Main();
+
+  RGBLedStrip strip;
 
   void init();
   void step(); 
